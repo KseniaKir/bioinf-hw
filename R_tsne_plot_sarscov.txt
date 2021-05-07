@@ -1,1 +1,18 @@
->library(readr)>covs_table <- read_csv("Python/covs_table.csv")> covs_data <- covs_table[ ,2:140] > covs_types <- covs_table[ ,1]> library(Rtsne)> tsne_results <- Rtsne(covs_data, perplexity=30, check_duplicates = FALSE) > par(mfrow=c(1,2)) > levels(covs_table$Covs_names)[1] "HCoV_229E"  "HCoV_HKU1"  "HCoV_NL63"  "HCoV_OC43"  "MERS_CoV"   "SARS_CoV"   "SARS_CoV_2"> colours <- factor(covs_table$Covs_names, levels=c("HCoV_229EÓ, "HCoV_HKU1Ó,  "HCoV_NL63Ó,  "HCoV_OC43Ó,  "MERS_CoVÓ,   "SARS_CoVÓ,   "SARS_CoV_2"))> library("RColorBrewer")> brewer.pal(n = 7, name = "YlOrRd")> colours <- colorRampPalette(c("#FFFFB2Ó, "#FED976Ó, Ò#FEB24CÓ, "#FD8D3CÓ, "#FC4E2AÓ, "#E31A1C" , Ò#B10026"))(length(unique(colours)))[factor(colours)]> plot(tsne_results$Y, col = "black", pch = 21, bg= colours, cex = 1.5)> legend(-4.5, 9, fill=c("#FFFFB2Ó, "#FED976Ó, Ò#FEB24CÓ, "#FD8D3CÓ, "#FC4E2AÓ, "#E31A1C" , Ò#B10026"), legend=levels(covs_table$Covs_names), cex=0.8)
+>library(readr)
+>covs_table <- read_csv("Python/covs_table.csv")
+> covs_data <- covs_table[ ,2:140] 
+> covs_types <- covs_table[ ,1]
+> library(Rtsne)
+> tsne_results <- Rtsne(covs_data, perplexity=30, check_duplicates = FALSE) 
+> par(mfrow=c(1,2)) 
+
+> levels(covs_table$Covs_names)
+[1] "HCoV_229E"  "HCoV_HKU1"  "HCoV_NL63"  "HCoV_OC43"  "MERS_CoV"   "SARS_CoV"   "SARS_CoV_2"
+
+> colours <- factor(covs_table$Covs_names, levels=c("HCoV_229EÃ“, "HCoV_HKU1Ã“,  "HCoV_NL63Ã“,  "HCoV_OC43Ã“,  "MERS_CoVÃ“,   "SARS_CoVÃ“,   "SARS_CoV_2"))
+> library("RColorBrewer")
+> brewer.pal(n = 7, name = "YlOrRd")
+> colours <- colorRampPalette(c("#FFFFB2", "#FED976", "#FEB24C", "#FD8D3C", "#FC4E2A", "#E31A1C" , "#B10026"))(length(unique(colours)))[factor(colours)]
+> plot(tsne_results$Y, col = "black", pch = 21, bg= colours, cex = 1.5)
+> legend(-4.5, 9, fill=c("#FFFFB2", "#FED976", "#FEB24C", "#FD8D3C", "#FC4E2A", "#E31A1C" , "#B10026"), legend=levels(covs_table$Covs_names), cex=0.8)
+
